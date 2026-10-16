@@ -1,0 +1,241 @@
+.fireworks-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Firework burst */
+.firework {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+}
+
+.fw-particle {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor, 0 0 16px currentColor;
+  animation: fireworkBurst ease-out infinite;
+}
+
+.fw-center {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, rgba(255, 255, 255, 0.8) 40%, transparent 80%);
+  animation: centerFlash ease-out infinite;
+}
+
+@keyframes fireworkBurst {
+  0% {
+    transform: rotate(var(--angle)) translate(0px) scale(1.4);
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: rotate(var(--angle)) translate(var(--distance)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+@keyframes centerFlash {
+  0% {
+    transform: scale(0.2);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+/* Floating heart */
+.floating-heart {
+  position: absolute;
+  bottom: -60px;
+  animation: heartFloatUp ease-in-out infinite;
+  filter: drop-shadow(0 2px 6px rgba(255, 105, 180, 0.4));
+}
+
+@keyframes heartFloatUp {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.7) rotate(-5deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-55vh) translateX(var(--sway)) scale(1.1) rotate(15deg);
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-115vh) translateX(calc(var(--sway) * -0.6)) scale(0.9) rotate(-10deg);
+    opacity: 0;
+  }
+}
+
+/* Floating ribbon */
+.floating-ribbon {
+  position: absolute;
+  top: -40px;
+  border-radius: 4px;
+  opacity: 0.75;
+  animation: ribbonTwirl ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes ribbonTwirl {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg) skewX(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(50vh) translateX(var(--swing)) rotate(180deg) skewX(25deg);
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(110vh) translateX(calc(var(--swing) * -1)) rotate(360deg) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+/* Floating star */
+.floating-star {
+  position: absolute;
+  animation: starBlink 2.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+}
+
+@keyframes starBlink {
+  0% {
+    transform: scale(0.6) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.25) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8) rotate(360deg);
+    opacity: 0.4;
+  }
+}
+
+/* Floating gift */
+.floating-gift {
+  position: absolute;
+  bottom: -60px;
+  animation: giftRise linear infinite;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+@keyframes giftRise {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-50vh) translateX(var(--sway)) rotate(15deg) scale(1.1);
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-115vh) translateX(calc(var(--sway) * -0.5)) rotate(-15deg) scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* Light rays in center */
+.light-rays {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+.light-ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 70vmax;
+  background: linear-gradient(180deg, rgba(255, 192, 203, 0.5), transparent);
+  transform-origin: top center;
+  animation: raySpin 25s linear infinite;
+}
+
+@keyframes raySpin {
+  0% {
+    transform: rotate(var(--angle, 0deg));
+  }
+  100% {
+    transform: rotate(calc(var(--angle, 0deg) + 360deg));
+  }
+}
+
+/* Music notes */
+.music-notes {
+  position: fixed;
+  bottom: 30px;
+  width: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.music-note {
+  position: absolute;
+  color: #ffb6c1;
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.8), 0 0 20px rgba(255, 182, 193, 0.5);
+  animation: noteFloat 4.5s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes noteFloat {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+    transform: translateY(-20px) scale(1.1) rotate(10deg);
+  }
+  80% {
+    opacity: 0.7;
+    transform: translateY(-100px) scale(1) rotate(-15deg);
+  }
+  100% {
+    transform: translateY(-150px) scale(0.7);
+    opacity: 0;
+  }
+}

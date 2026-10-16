@@ -1,0 +1,63 @@
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  animation: confettiFall linear infinite;
+  opacity: 0.85;
+}
+
+.square {
+  border-radius: 2px;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.triangle {
+  width: 0 !important;
+  height: 0 !important;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  background: transparent !important;
+}
+
+.star-shape {
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.85;
+  }
+  25% {
+    transform: translateY(25vh) translateX(var(--swing)) rotate(180deg);
+  }
+  50% {
+    transform: translateY(50vh) translateX(calc(var(--swing) * -0.5)) rotate(360deg);
+  }
+  75% {
+    transform: translateY(75vh) translateX(var(--swing)) rotate(540deg);
+  }
+  95% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(105vh) translateX(calc(var(--swing) * -1)) rotate(720deg);
+    opacity: 0;
+  }
+}

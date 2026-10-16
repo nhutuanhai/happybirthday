@@ -1,0 +1,118 @@
+.flowers-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.falling-flower {
+  position: absolute;
+  top: -40px;
+  animation: flowerFall linear infinite;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
+}
+
+@keyframes flowerFall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.9;
+  }
+  25% {
+    transform: translateY(25vh) translateX(var(--swing)) rotate(90deg);
+  }
+  50% {
+    transform: translateY(50vh) translateX(calc(var(--swing) * -0.7)) rotate(180deg);
+  }
+  75% {
+    transform: translateY(75vh) translateX(var(--swing)) rotate(270deg);
+  }
+  95% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(110vh) translateX(calc(var(--swing) * -0.3)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Corner flower decorations */
+.corner-flowers {
+  position: fixed;
+  z-index: 4;
+}
+
+.top-left {
+  top: 0;
+  left: 0;
+}
+
+.top-right {
+  top: 0;
+  right: 0;
+}
+
+.bottom-left {
+  bottom: 0;
+  left: 0;
+}
+
+.bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.static-flower {
+  position: absolute;
+  font-size: 28px;
+  animation: flowerPulse 3s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+/* Top-left positions */
+.top-left .sf1 { top: 10px; left: 10px; animation-delay: 0s; font-size: 35px; }
+.top-left .sf2 { top: 5px; left: 50px; animation-delay: 0.5s; font-size: 28px; }
+.top-left .sf3 { top: 40px; left: 15px; animation-delay: 1s; font-size: 24px; }
+.top-left .sf4 { top: 35px; left: 55px; animation-delay: 1.5s; font-size: 20px; }
+.top-left .sf5 { top: 65px; left: 30px; animation-delay: 2s; font-size: 22px; }
+
+/* Top-right positions */
+.top-right .sf1 { top: 10px; right: 10px; animation-delay: 0.3s; font-size: 35px; }
+.top-right .sf2 { top: 5px; right: 50px; animation-delay: 0.8s; font-size: 28px; }
+.top-right .sf3 { top: 40px; right: 15px; animation-delay: 1.3s; font-size: 24px; }
+.top-right .sf4 { top: 35px; right: 55px; animation-delay: 1.8s; font-size: 20px; }
+.top-right .sf5 { top: 65px; right: 30px; animation-delay: 2.3s; font-size: 22px; }
+
+/* Bottom-left positions */
+.bottom-left .sf1 { bottom: 10px; left: 10px; animation-delay: 0.2s; font-size: 32px; }
+.bottom-left .sf2 { bottom: 5px; left: 45px; animation-delay: 0.7s; font-size: 26px; }
+.bottom-left .sf3 { bottom: 35px; left: 15px; animation-delay: 1.2s; font-size: 22px; }
+.bottom-left .sf4 { bottom: 30px; left: 50px; animation-delay: 1.7s; font-size: 20px; }
+
+/* Bottom-right positions */
+.bottom-right .sf1 { bottom: 10px; right: 10px; animation-delay: 0.4s; font-size: 32px; }
+.bottom-right .sf2 { bottom: 5px; right: 45px; animation-delay: 0.9s; font-size: 26px; }
+.bottom-right .sf3 { bottom: 35px; right: 15px; animation-delay: 1.4s; font-size: 22px; }
+.bottom-right .sf4 { bottom: 30px; right: 50px; animation-delay: 1.9s; font-size: 20px; }
+
+@keyframes flowerPulse {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.15) rotate(5deg); }
+  50% { transform: scale(1) rotate(0deg); }
+  75% { transform: scale(1.1) rotate(-5deg); }
+}
+
+@media (max-width: 768px) {
+  .static-flower {
+    font-size: 18px !important;
+  }
+  .top-left .sf1, .top-right .sf1, .bottom-left .sf1, .bottom-right .sf1 {
+    font-size: 24px !important;
+  }
+}

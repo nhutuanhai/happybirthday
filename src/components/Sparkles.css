@@ -1,0 +1,29 @@
+.sparkles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sparkle {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle ease-in-out infinite;
+  box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.8),
+              0 0 12px 4px rgba(255, 215, 0, 0.4);
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

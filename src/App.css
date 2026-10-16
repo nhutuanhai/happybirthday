@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Pacifico&family=Great+Vibes&display=swap');
+
+/* ==================== RESET & BASE ==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* ==================== MAIN APP ==================== */
+.birthday-app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Dancing Script', cursive;
+}
+
+/* ==================== BACKGROUND ==================== */
+.bg-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    #1a0a2e 0%,
+    #2d1b4e 15%,
+    #4a1942 30%,
+    #6b1d5e 45%,
+    #4a1942 60%,
+    #2d1b4e 75%,
+    #1a0a2e 100%
+  );
+  z-index: 0;
+}
+
+.bg-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 105, 180, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 182, 193, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 10% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 90% 70%, rgba(255, 20, 147, 0.1) 0%, transparent 40%);
+  animation: bgShimmer 8s ease-in-out infinite alternate;
+}
+
+@keyframes bgShimmer {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* ==================== MAIN CONTENT ==================== */
+.main-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.main-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==================== TITLE ==================== */
+.title-container {
+  text-align: center;
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateY(-30px) scale(0.8);
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.title-container.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.birthday-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.title-line {
+  font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  color: #ffd700;
+  text-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.5),
+    0 0 20px rgba(255, 215, 0, 0.3),
+    0 0 40px rgba(255, 215, 0, 0.2),
+    2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+.title-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  background: linear-gradient(135deg, #ff69b4, #ff1493, #ff69b4, #ffb6c1, #ff69b4);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 8px rgba(255, 105, 180, 0.5));
+  animation: nameShine 3s linear infinite;
+  border: 3px solid rgba(255, 105, 180, 0.3);
+  border-radius: 50px;
+  padding: 5px 30px;
+  position: relative;
+}
+
+.title-name::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 2px solid rgba(255, 182, 193, 0.4);
+  border-radius: 52px;
+  animation: borderPulse 2s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3), 2px 2px 4px rgba(0, 0, 0, 0.3); }
+  100% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.5), 0 0 60px rgba(255, 215, 0, 0.3), 2px 2px 4px rgba(0, 0, 0, 0.3); }
+}
+
+@keyframes nameShine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes borderPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+/* ==================== CAKE WRAPPER ==================== */
+.cake-wrapper {
+  width: 350px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.3) translateY(50px);
+  transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cake-wrapper.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* ==================== BOTTOM MESSAGE ==================== */
+.bottom-message {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease 0.5s;
+}
+
+.bottom-message.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wish-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.4rem;
+  color: #ffb6c1;
+  text-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+  margin-bottom: 15px;
+  animation: wishPulse 3s ease-in-out infinite;
+}
+
+@keyframes wishPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+.hearts-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.bounce-emoji {
+  display: inline-block;
+  font-size: 1.5rem;
+  animation: emojiBounce 2s ease-in-out infinite;
+}
+
+@keyframes emojiBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  25% { transform: translateY(-12px) scale(1.1); }
+  50% { transform: translateY(0) scale(1); }
+  75% { transform: translateY(-6px) scale(1.05); }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .title-line {
+    font-size: 1.4rem;
+  }
+  
+  .title-name {
+    font-size: 2.5rem;
+    padding: 5px 20px;
+  }
+  
+  .cake-wrapper {
+    width: 280px;
+    height: 320px;
+  }
+  
+  .wish-text {
+    font-size: 1.1rem;
+  }
+  
+  .bounce-emoji {
+    font-size: 1.2rem;
+  }
+  
+  .hearts-row {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-line {
+    font-size: 1.1rem;
+  }
+  
+  .title-name {
+    font-size: 1.8rem;
+    padding: 5px 15px;
+  }
+  
+  .cake-wrapper {
+    width: 240px;
+    height: 280px;
+  }
+  
+  .wish-text {
+    font-size: 0.95rem;
+  }
+  
+  .bounce-emoji {
+    font-size: 1rem;
+  }
+  
+  .main-content {
+    padding: 10px;
+    gap: 5px;
+  }
+}
+
+@media (max-height: 700px) {
+  .main-content {
+    gap: 5px;
+  }
+  
+  .title-container {
+    margin-bottom: 5px;
+  }
+  
+  .cake-wrapper {
+    height: 300px;
+  }
+}
+
+/* ==================== SCROLLBAR ==================== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a0a2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff69b4, #e91e63);
+  border-radius: 3px;
+}
